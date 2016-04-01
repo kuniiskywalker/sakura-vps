@@ -5,14 +5,11 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = "opscode/centos7.0"
+  config.vm.box = "centos7.1"
 
-  config.vm.box_url = "http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-7.0_chef-provisionerless.box"
+  config.vm.box_url = "https://github.com/CommanderK5/packer-centos-template/releases/download/0.7.1/vagrant-centos-7.1.box"
 
-  # forward-agentとは
-  # ホストマシンのssh-agentをログイン先のマシンからも参照できるsshの機能です。
-  # これを利用することで、githubなどいろいろなところに登録されたホストマシン
-  # の公開鍵を、ローカルVMからも利用することができ、開発の際に捗ります。
+  # Available use private key of host os on guest oss
   config.ssh.forward_agent = true
 
   config.omnibus.chef_version = :latest
@@ -20,6 +17,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network "private_network", ip: "192.168.33.10"
 
   config.vm.synced_folder ".", "/vagrant", owner: "vagrant", group: "vagrant", mount_options: ["dmode=777", "fmode=777"]
+
+  # config.vm.provision :shell, :path => "bootstrap.sh"
   
   config.vm.provision "chef_solo" do |chef|
 
@@ -27,6 +26,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     chef.add_recipe "yumsetup"
     chef.add_recipe "docker"
+    chef.add_recipe "security::virtualbox"
+    chef.add_recipe "git"
   end
 
   config.vm.provider "virtualbox" do |vb|
