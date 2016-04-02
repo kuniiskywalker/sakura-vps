@@ -26,8 +26,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     chef.add_recipe "yumsetup"
     chef.add_recipe "docker"
-    chef.add_recipe "security::virtualbox"
+    chef.add_recipe "selinux"
     chef.add_recipe "git"
+    chef.add_recipe "firewalld"
   end
 
   config.vm.provider "virtualbox" do |vb|

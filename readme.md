@@ -1,10 +1,10 @@
-## setup host os enviroment on VM
+## Setup host os enviroment on VM
 
 ```
 vagrant up
 ```
 
-## require plugin
+## Require plugin
 
 vagrant-vbguest
 
@@ -18,9 +18,16 @@ vagrant vbguest
 
 Execute "vagrant ssh" and login VM.
 
-# Install chef to you server
+# Install chef to your server
 
-if first add node, next command.
+Move the current directory to the chef of the repository .
+
+```
+$ cd /vagrant/chef-repo
+```
+
+If first, install chef to your server.
+
 ```
 knife zero bootstrap {REMOTE IP} -x {SSH USER NAME}
 ```
