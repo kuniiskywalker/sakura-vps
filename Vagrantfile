@@ -29,6 +29,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe "selinux"
     chef.add_recipe "git"
     chef.add_recipe "firewalld"
+    chef.add_recipe "sudo"
   end
 
   config.vm.provider "virtualbox" do |vb|
