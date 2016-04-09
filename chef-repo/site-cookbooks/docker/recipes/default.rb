@@ -23,7 +23,7 @@ service "docker" do
   action [:start, :enable]
 end
 
-dockercompose_install_url ="https://github.com/docker/compose/releases/download/1.3.1/docker-compose-`uname -s`-`uname -m`"
+dockercompose_install_url ="https://github.com/docker/compose/releases/download/1.6.2/docker-compose-`uname -s`-`uname -m`"
 
 execute "install docker-compose" do
   not_if { File.exists?("/usr/local/bin/docker-compose") }
