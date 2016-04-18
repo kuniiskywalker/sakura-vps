@@ -34,7 +34,7 @@ execute "install docker-compose" do
   action :run
 end
 
-dockermachine_install_url ="https://github.com/docker/machine/releases/download/v0.1.0/docker-machine_linux-amd64"
+dockermachine_install_url ="https://github.com/docker/machine/releases/download/v0.7.0/docker-machine-`uname -s`-`uname -m`"
 
 execute "install docker-machine" do
   not_if { File.exists?("/usr/local/bin/docker-machine") }
