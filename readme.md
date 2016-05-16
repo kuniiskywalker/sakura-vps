@@ -35,7 +35,7 @@ knife zero bootstrap {REMOTE IP} -x {SSH USER NAME}
 # Rrovisioning your server
 
 ```
-knife zero converge 'name:{HOSTNAME}' -x {SSH USER NAME}
+knife zero converge 'name:{HOSTNAME}' -a ipaddress -x {SSH USER NAME}
 ```
 
 ## Is it easy to use the "git" on VM
@@ -53,3 +53,4 @@ If mac or linux
 ```
 ssh-add ~/.ssh/id_rsa
 ```
+
